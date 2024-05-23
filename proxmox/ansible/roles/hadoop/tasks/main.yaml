@@ -1,0 +1,45 @@
+
+- name: CREATE volumes path
+  ansible.builtin.file:
+    path: "/root/hadoop/volumes"
+    state: directory
+    recurse: yes
+    force: yes
+
+- name: COPY
+  copy:
+    src: "{{ role_path }}/files"
+    dest: "/root/hadoop"
+
+- name: BUILD
+  community.docker.docker_image:
+    name: hadoop-pbl:1.0.0
+    source: build
+    build:
+      #dockerfile: /root/Dockerfile
+      path: "/root/hadoop/files"
+
+- name: REMOVE FILE
+  ansible.builtin.file:
+    path: "/root/hadoop/files"
+    state: absent
+
+- name: RUN
+  docker_container:
+    name: hadoop
+    image: hadoop-pbl:1.0.0
+    ports:              # El NameNode es el maestro que mantiene el registro del árbol de nombres del sistema de archivos y gestiona el espacio de nombres del sistema de archivos.
+      - "8088:8088"     # default port for the Hadoop ResourceManager Web UI
+      - "8042:8042"     # used by the NodeManager Web UI.
+      - "9870:9870"
+      - "2222:22"
+    detach: true
+    restart_policy: always
+    #volumes:
+    #  - "./:/opt/hadoop"
+
+#    Para la interfaz del NameNode: http://localhost:9870
+#    Para la interfaz del ResourceManager: http://localhost:8088
+#    Para la interfaz del Secondary NameNode: http://localhost:9870
+#    Para la interfaz del ApplicationMaster: http://localhost:8042
+#    You can access the ResourceManager Web UI at http://<container-ip>:8088, and the NodeManager Web UI at http://<container-ip>:8042

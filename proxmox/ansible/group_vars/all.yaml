@@ -1,0 +1,5 @@
+# Variables globales aplicables a todos los hosts
+
+# Variable global para todo el inventario
+docker_debian_url: https://download.docker.com/linux/debian/gpg
+ansible_user: root

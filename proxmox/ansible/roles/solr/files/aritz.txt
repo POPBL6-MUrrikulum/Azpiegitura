@@ -1,0 +1,24 @@
+apt update && apt upgrade -y
+apt install -y openssh-server sudo wget nano tree lsof iproute2
+echo 'deb http://deb.debian.org/debian/ sid main' >> /etc/apt/sources.list && apt-get update && apt-get install -y openjdk-8-jdk
+
+wget https://downloads.apache.org/lucene/solr/8.11.3/solr-8.11.3.tgz 
+#tar -xzvf solr.tgz -C /opt/user --strip-components=1 && rm solr.tgz
+tar xzf solr-8.11.3.tgz 
+bash solr-8.11.3/bin/install_solr_service.sh solr-8.11.3.tgz 
+
+
+
+--------------------frogatu-------------------
+
+docker exec -it solr bash
+docker logs solr(si seapaga el container)
+sortu core
+    /opt/solr-8.11.3/bin/solr create -c name-of-your-new-core
+
+solr@446f168b0079:/opt/solr-8.11.3$ cd /var/solr/data/
+solr@446f168b0079:~/data$ nano sample.csv
+solr@446f168b0079:~/data$ /opt/solr-8.11.3/bin/post -c test-core sample.csv
+
+
+

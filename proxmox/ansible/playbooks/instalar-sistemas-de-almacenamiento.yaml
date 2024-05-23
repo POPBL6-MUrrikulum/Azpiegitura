@@ -1,0 +1,8 @@
+
+# Playbook principal
+- name: ejecutar tareas en los containers
+  hosts: biltegiak
+  become: yes  # Utilizar privilegio de superusuario
+  roles:
+    - hadoop
+    - cassandra

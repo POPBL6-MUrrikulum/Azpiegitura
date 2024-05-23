@@ -1,0 +1,10 @@
+---
+# Tareas para actualizar el sistema
+- name: Actualizar lista de paquetes
+  apt:
+    update_cache: yes  # Actualizar la lista de paquetes
+
+- name: Actualizar todos los paquetes instalados
+  apt:
+    upgrade: yes  # Actualizar todos los paquetes instalados
+    autoremove: yes  # Eliminar automáticamente los paquetes que ya no son necesarios

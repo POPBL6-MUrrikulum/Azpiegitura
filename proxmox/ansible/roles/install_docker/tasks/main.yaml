@@ -1,0 +1,27 @@
+---
+# Tareas para instalar Docker
+- name: Instalar dependencias
+  apt:
+    name: "{{ item }}"
+    state: present  # Asegurarse de que estén instaladas las dependencias necesarias para Docker
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg
+    - software-properties-common
+
+- name: Agregar la clave GPG de Docker
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present  # Asegurarse de que la clave esté presente
+
+- name: Agregar el repositorio de Docker
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present  # Asegurarse de que el repositorio esté presente
+
+- name: Instalar Docker
+  apt:
+    name: docker-ce  # Instalar Docker Community Edition
+    state: present  # Asegurarse de que Docker esté instalado

@@ -1,0 +1,26 @@
+- name: COPY 
+  copy:
+    src: "{{ role_path }}/files"
+    dest: "/root/elasticsearch"
+
+- name: BUILD
+  community.docker.docker_image:
+    name: elasticsearch_img:latest
+    source: build
+    build:
+      #dockerfile: /root/Dockerfile
+      path: "/root/elasticsearch/files"
+
+- name: REMOVE FILE
+  ansible.builtin.file:
+    path: "/root/elasticsearch/files"
+    state: absent
+
+- name: RUN
+  docker_container:
+    name: elasticsearch
+    image: elasticsearch_img:latest
+    ports:
+      - "9200:9200" 
+      - "9300:9300"  
+    detach: true

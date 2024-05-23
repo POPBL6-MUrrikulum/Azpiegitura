@@ -1,0 +1,37 @@
+# crear carpeta
+mkdir -p /etc/docker/certs.d/sub.mydomain.com[:5000]
+
+
+# generar key para scp
+ssh-keygen ... y todo eso y poner .pub en remote authorized_keys
+
+
+# copiar los files desde remote
+
+scp sub.mydomain.com:/root/registry/zertifikatuak/server/ca.crt ./ca.crt
+scp 10.0.2.11:/root/registry/zertifikatuak/client/client.cert ./client.cert
+scp 10.0.2.11:/root/registry/zertifikatuak/client/client.key ./client.key
+
+# cosas a tener en cuenta
+especificar host estatico (si al crear el registry has puesto con nombre en vez de ip)
+    echo "10.0.2.11 sub.mydomain.com" >> /etc/hosts
+
+dentro de /etc/docker/daemon.json pon lo siguiente 
+para decir a debian que tome el riesgo de hacer peticiones http 
+(registry esta preparado para escuchar http y no hattps)
+      {
+         "insecure-registries":["sub.mydomain.com:5000"]
+      }
+
+    #Irudi berria sortu: ​
+
+docker tag python3_webserver:latest sub.mydomain.com:5000/python_webserver:1.0.0
+
+    #Irudi berria igo:​
+
+docker push sub.mydomain.com:5000/python_webserver:1.0.0
+
+"docker search" solo es para repositorios oficiales, para ver tus repositorios:
+    curl sub.mydomain.com:5000/v2/_catalog
+        deberia de salir algo como {"repositories":["python_webserver"]}
+

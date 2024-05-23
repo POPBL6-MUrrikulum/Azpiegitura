@@ -1,0 +1,38 @@
+- name: crear carpeta, futuro volumen de python
+  ansible.builtin.file:
+    path: "/root"
+    state: directory
+  
+- name: crear carpeta, futuro volumen de python
+  ansible.builtin.file:
+    path: "/root/python-data"
+    state: directory
+
+- name: Copiar Dockerfile al servidor remoto
+  copy:
+    src: "{{ role_path }}/files/Dockerfile"
+    dest: /root/Dockerfile
+
+- name: Copiar index.html al servidor remoto
+  copy:
+    src: "{{ role_path }}/files/index.html"
+    #dest: /root/index.html
+    dest: /root/python-data/index.html
+
+- name: Construir la imagen Docker con argumentos de construcción
+  community.docker.docker_image:
+    name: python3_webserver:latest
+    source: build
+    build:
+      #dockerfile: /root/python3/Dockerfile
+      path: /root
+
+- name: Crear y ejecutar contenedor Docker
+  docker_container:
+    name: python3_webserver_container
+    image: python3_webserver:latest
+    ports:
+      - "8001:8000"
+    volumes:
+      - /root/python-data:/home/user
+    detach: true

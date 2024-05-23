@@ -1,0 +1,24 @@
+
+- name: COPY FILES
+  copy:
+    src: "{{ role_path }}/files"
+    dest: /home/user/
+
+
+- name: BUILD IMAGE
+  community.docker.docker_image:
+    name: kafka-pbl:1.0.0
+    source: build
+    build:
+      #dockerfile: /root/python3/Dockerfile
+      path: /home/user/files
+
+- name: RUN kafka
+  docker_container:
+    name: kafka
+    image: kafka-pbl:1.0.0
+    ports:
+      - "9092:9092"
+    volumes:
+      - "/home/user/kafka_volume:/opt/kafka/data" 
+    detach: true

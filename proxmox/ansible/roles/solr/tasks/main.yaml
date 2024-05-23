@@ -1,0 +1,25 @@
+- name: COPY 
+  copy:
+    src: "{{ role_path }}/files"
+    dest: "/root/solr"
+
+- name: BUILD
+  community.docker.docker_image:
+    name: solr_img:latest
+    source: build
+    build:
+      #dockerfile: /root/Dockerfile
+      path: "/root/solr/files"
+
+- name: REMOVE FILE
+  ansible.builtin.file:
+    path: "/root/solr/files"
+    state: absent
+
+- name: RUN
+  docker_container:
+    name: solr
+    image: solr_img:latest
+    ports:
+      - "8983:8983"   
+    detach: true

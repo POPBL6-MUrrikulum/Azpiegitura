@@ -1,0 +1,10 @@
+# Variables globales aplicables a todos los hosts
+
+# Variable global para todo el inventario
+docker_debian_url: https://download.docker.com/linux/debian/gpg
+ansible_user: user
+
+# Variables de configuración para todas las máquinas
+gcp_project_id: "murrikulum-popbl6-2024"
+gcp_auth_kind: "serviceaccount"
+gcp_cred_file: "/home/user/data-engineering/gcp/PBL6.json"

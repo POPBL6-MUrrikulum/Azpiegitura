@@ -1,0 +1,8 @@
+---
+# Playbook principal
+- name: Actualizar sistema e instalar Docker
+  hosts: cassandra  # Ejecutar en el grupo 'googlecloud'
+  become: yes  # Utilizar privilegio de superusuario
+  roles:
+    - system_upgrade  # Ejecutar el rol para actualizar el sistema
+    - install_docker  # Ejecutar el rol para instalar Docker

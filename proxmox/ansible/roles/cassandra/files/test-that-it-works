@@ -1,0 +1,52 @@
+Connect to Cassandra Cluster:
+
+    Use the cqlsh command-line tool to connect to the Cassandra cluster. This tool is usually included with Cassandra installations.
+    Run cqlsh command in your terminal to start the cqlsh shell.
+
+Create a Keyspace:
+
+    Once connected to cqlsh, you can create a keyspace using CQL (Cassandra Query Language) commands. For example:
+
+    sql
+
+    CREATE KEYSPACE my_keyspace WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+Use the Keyspace:
+
+    After creating the keyspace, switch to it using the USE command. For example:
+
+    USE my_keyspace;
+
+Create a Table:
+
+    Create a table within the keyspace you've just created. Define the table schema according to your requirements. For example:
+
+    sql
+
+    CREATE TABLE my_table (
+        id UUID PRIMARY KEY,
+        name text,
+        age int
+    );
+
+Insert Data:
+
+    Insert some data into the table you've created. For example:
+
+    sql
+
+    INSERT INTO my_table (id, name, age) VALUES (uuid(), 'John', 30);
+
+Query Data:
+
+    Query the data you've inserted to verify that it's stored correctly. For example:
+
+    sql
+
+    SELECT * FROM my_table;
+
+Verify Results:
+
+    Verify that the data returned by the query matches the data you've inserted.
+
+Exit cqlsh:

@@ -1,0 +1,18 @@
+wget https://www.apache.org/dyn/closer.lua?path=/nifi/2.0.0-M3/nifi-2.0.0-M3-bin.zip
+
+apt install unzip -y
+
+unzip nifi-2.0.0-M3-bin.zip
+
+bin/nifi.sh install
+
+sudo service nifi start
+
+logs/nifi-app.log para ver contraseñas generadas
+./bin/nifi.sh set-single-user-credentials <username> <password>
+https://localhost:8443/nifi
+
+nifi.properties
+
+wget https://downloads.apache.org/nifi/2.0.0-M3/nifi-2.0.0-M3-bin.zip.sha256 -O nifi.zip.sha256
+sha256sum -c nifi.zip.sha256

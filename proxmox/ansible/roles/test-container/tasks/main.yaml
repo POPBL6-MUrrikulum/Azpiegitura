@@ -1,0 +1,29 @@
+- name: COPY 
+  copy:
+    src: "{{ role_path }}/files"
+    dest: "/root/test"
+
+- name: BUILD
+  community.docker.docker_image:
+    name: test:latest
+    source: build
+    build:
+      #dockerfile: /root/Dockerfile
+      path: "/root/test/files"
+
+- name: REMOVE FILE
+  ansible.builtin.file:
+    path: "/root/test/files"
+    state: absent
+
+- name: RUN test-container
+  docker_container:
+    name: test-c
+    image: test:latest
+    ports:
+      - "16000:16000"
+      - "16010:16010"
+      - "16020:16020"
+      - "800:8080"
+    #restart_policy: always
+    detach: yes
