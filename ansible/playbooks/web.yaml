@@ -1,0 +1,7 @@
+---
+# Playbook principal
+- name: INSTALL THINGS FOR WEB
+  hosts: web  # Ejecutar en el grupo 'googlecloud'
+  become: yes  # Utilizar privilegio de superusuario
+  roles:
+    - web-servers  # Ejecutar el rol para actualizar el sistema

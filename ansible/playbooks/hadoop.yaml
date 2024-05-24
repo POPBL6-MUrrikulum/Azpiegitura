@@ -1,0 +1,7 @@
+
+# Playbook principal
+- name: INSTALL HADOOP
+  hosts: biltegiak
+  become: yes  # Utilizar privilegio de superusuario
+  roles:
+    - hadoop

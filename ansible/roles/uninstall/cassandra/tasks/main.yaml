@@ -1,0 +1,17 @@
+- name: Stop the Cassandra container
+  docker_container:
+    name: cassandra
+    state: stopped
+  ignore_errors: yes
+
+- name: Remove the Cassandra container
+  docker_container:
+    name: cassandra
+    state: absent
+  ignore_errors: yes
+
+- name: Remove the Cassandra image
+  docker_image:
+    name: cassandra-pbl:1.0.0
+    state: absent
+  ignore_errors: yes

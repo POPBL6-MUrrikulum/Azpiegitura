@@ -1,8 +1,0 @@
-
-# Playbook principal
-- name: ejecutar tareas en los containers
-  hosts: data  # Ejecutar en el grupo 'data'
-  become: yes  # Utilizar privilegio de superusuario
-  roles:
-    - system_upgrade    
-    - install_docker

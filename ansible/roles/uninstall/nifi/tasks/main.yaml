@@ -1,0 +1,17 @@
+- name: Stop the nifi container
+  docker_container:
+    name: nifi
+    state: stopped
+  ignore_errors: yes
+
+- name: Remove the nifi container
+  docker_container:
+    name: nifi
+    state: absent
+  ignore_errors: yes
+
+- name: Remove the nifi image
+  docker_image:
+    name: nifi-pbl:1.0.0
+    state: absent
+  ignore_errors: yes

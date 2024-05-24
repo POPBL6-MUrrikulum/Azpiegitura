@@ -1,9 +1,0 @@
-
-# Playbook principal
-- name: irensketa # ejecutar tareas en los containers
-  hosts: irensketa  # Ejecutar en el grupo 'containers'
-  become: yes  # Utilizar privilegio de superusuario
-  roles:
-    #- nifi
-    - zookeper
-    - kafka    

@@ -1,0 +1,17 @@
+- name: Stop the kafka container
+  docker_container:
+    name: kafka
+    state: stopped
+  ignore_errors: yes
+
+- name: Remove the kafka container
+  docker_container:
+    name: kafka
+    state: absent
+  ignore_errors: yes
+
+- name: Remove the kafka image
+  docker_image:
+    name: kafka-pbl:1.0.0
+    state: absent
+  ignore_errors: yes

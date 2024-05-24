@@ -1,0 +1,7 @@
+
+# Playbook principal
+- name: INSTALL NIFI # ejecutar tareas en los containers
+  hosts: fluxuak 
+  become: yes  # Utilizar privilegio de superusuario
+  roles:
+    - nifi 

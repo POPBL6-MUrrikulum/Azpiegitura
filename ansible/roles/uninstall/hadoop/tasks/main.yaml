@@ -1,0 +1,17 @@
+- name: Stop the hadoop container
+  docker_container:
+    name: hadoop
+    state: stopped
+  ignore_errors: yes
+
+- name: Remove the hadoop container
+  docker_container:
+    name: hadoop
+    state: absent
+  ignore_errors: yes
+
+- name: Remove the hadoop image
+  docker_image:
+    name: hadoop-pbl:1.0.0
+    state: absent
+  ignore_errors: yes

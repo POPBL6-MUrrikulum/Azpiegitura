@@ -1,0 +1,8 @@
+
+# Playbook principal
+- name: INSTALL KAFKA 
+  hosts: fluxuak  
+  become: yes  # Utilizar privilegio de superusuario
+  roles:
+    - zookeper
+    - kafka    

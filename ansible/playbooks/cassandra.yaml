@@ -1,0 +1,7 @@
+
+# Playbook principal
+- name: INSTALL CASSANDRA
+  hosts: biltegiak
+  become: yes  # Utilizar privilegio de superusuario
+  roles:
+    - cassandra

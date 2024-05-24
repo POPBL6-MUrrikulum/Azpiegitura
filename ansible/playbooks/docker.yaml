@@ -1,0 +1,8 @@
+
+# Playbook principal
+- name: INSTALL DOCKER
+  hosts: denak  # Ejecutar en el grupo 'pve_all'
+  become: yes  # Utilizar privilegio de superusuario
+  roles:
+    - system_upgrade    
+    - install_docker
