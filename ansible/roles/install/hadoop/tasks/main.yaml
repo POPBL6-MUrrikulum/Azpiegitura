@@ -28,11 +28,23 @@
   docker_container:
     name: hadoop
     image: hadoop-pbl:1.0.0
-    ports:              # El NameNode es el maestro que mantiene el registro del árbol de nombres del sistema de archivos y gestiona el espacio de nombres del sistema de archivos.
-      - "8088:8088"     # default port for the Hadoop ResourceManager Web UI
-      - "8042:8042"     # used by the NodeManager Web UI.
-      - "9870:9870"
+    ports:              
+      
+      - "9870:9870"   # (interfaz web del NameNode)
+      - "8020:8020"   # (comunicación entre clientes y el NameNode)
+
+      - "8032:8032"   # (comunicación entre clientes y el ResourceManager)
+      - "8088:8088"   # (interfaz web del ResourceManager)
+
+      - "50010:50010" # (DataNode transferencia de bloques de datos)
+      - "50020:50020" # (comunicación entre DataNodes)
+      - "50075:50075" # (interfaz web del DataNode)
+      - "9866:9866"   # NO SEEEEE POR QUEEEE 
+
+      - "8042:8042"   # (interfaz web del NodeManager)  
       - "2222:22"
+      - "9000:9000"
+     
     detach: true
     restart_policy: always
     #volumes:

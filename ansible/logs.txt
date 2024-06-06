@@ -1,0 +1,38 @@
+
+PLAY [INSTALL HADOOP] **********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [10.0.2.21]
+ok: [10.0.2.22]
+ok: [10.0.2.20]
+
+TASK [hadoop : CREATE volumes path] ********************************************
+ok: [10.0.2.20]
+ok: [10.0.2.22]
+ok: [10.0.2.21]
+
+TASK [hadoop : COPY] ***********************************************************
+changed: [10.0.2.21]
+changed: [10.0.2.22]
+changed: [10.0.2.20]
+
+TASK [hadoop : BUILD] **********************************************************
+changed: [10.0.2.22]
+changed: [10.0.2.21]
+changed: [10.0.2.20]
+
+TASK [hadoop : REMOVE FILE] ****************************************************
+changed: [10.0.2.21]
+changed: [10.0.2.20]
+changed: [10.0.2.22]
+
+TASK [hadoop : RUN] ************************************************************
+changed: [10.0.2.21]
+changed: [10.0.2.22]
+changed: [10.0.2.20]
+
+PLAY RECAP *********************************************************************
+10.0.2.20                  : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+10.0.2.21                  : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+10.0.2.22                  : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

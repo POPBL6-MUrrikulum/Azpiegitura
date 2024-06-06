@@ -17,10 +17,12 @@ ansible.log
 # Ansible retry files
 .retry
 
-*/hadoop-3.4.0.tar.gz
+*hadoop.tar.gz
+/home/user/data-engineering/ansible/roles/install/hadoop/files/hadoop.tar.gz
+
 
 *PBL6.json
-proxmox/ansible/roles/hadoop/files/hadoop-3.4.0.tar.gz
+*datueningeniaritza-413916-a506d6d03177.json
 
 # eval "$(ssh-agent -s)"
 # ssh-add ~/.ssh/gakoa

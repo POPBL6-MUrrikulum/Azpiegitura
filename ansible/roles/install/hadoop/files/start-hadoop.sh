@@ -23,7 +23,7 @@ format_namenode() {
 # Función para iniciar SSH y Hadoop
 start_services() {
     echo "Starting SSH..."
-    sudo /etc/init.d/ssh start
+    sudo service ssh restart
     echo "Starting Hadoop services..."
     $HADOOP_HOME/sbin/start-all.sh
 }

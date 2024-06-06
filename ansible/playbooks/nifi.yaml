@@ -4,4 +4,5 @@
   hosts: fluxuak 
   become: yes  # Utilizar privilegio de superusuario
   roles:
+    #- zookeeper
     - nifi 

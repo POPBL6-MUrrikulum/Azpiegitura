@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     sudo \
     wget \
     unzip \
+    nano \
     gnupg \
     --no-install-recommends \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
@@ -43,7 +44,7 @@ RUN wget https://downloads.apache.org/nifi/KEYS -O KEYS\
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV PATH=$JAVA_HOME/bin:$PATH
 
-EXPOSE 8080
+EXPOSE 8080 8082
 
 
 RUN JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 /opt/user/nifi-1.26.0/bin/nifi.sh install && /opt/user/nifi-1.26.0/bin/nifi.sh start && /opt/user/nifi-1.26.0/bin/nifi.sh stop
@@ -53,6 +54,8 @@ RUN sed -i 's/nifi.remote.input.secure=true/ nifi.remote.input.secure=false /' /
 && sed -i 's/nifi.web.https.port=8443/ nifi.web.https.port= /'                 /opt/user/nifi-1.26.0/conf/nifi.properties \  
 && sed -i 's/nifi.web.http.host=/ nifi.web.http.host=0.0.0.0 /'                /opt/user/nifi-1.26.0/conf/nifi.properties \
 && sed -i 's/nifi.web.http.port=/ nifi.web.http.port=8080 /'                   /opt/user/nifi-1.26.0/conf/nifi.properties 
+
+EXPOSE 8080 8082 10000
 
 #CMD ["sh", "-c", "service nifi start; tail -f /dev/null"]
 #CMD ["sh", "-c", "service nifi start && exec tail -f /opt/user/nifi/logs/nifi-app.log"]

@@ -1,4 +1,3 @@
----
 # Playbook principal
 - name: INSTALL THINGS FOR WEB
   hosts: web  # Ejecutar en el grupo 'googlecloud'

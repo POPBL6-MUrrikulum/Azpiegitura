@@ -1,0 +1,109 @@
+master node 10.0.2.20
+    bloques utilizados
+        NameNode 
+        ResourceManager 
+        DataNode (opcional, si se quiere almacenar tamnbien en el master. entuestro caso si)
+        SecondaryNameNode (creo que es para hacer backups y asi... no tengo muy claro)
+
+    definir asi mismo como master (core-site.xml)
+    <property>
+        <name>fs.default.name</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+    namenode que escuche en todas las interfaces (hdfs-site.xml)
+        <property>
+            <name>dfs.replication</name>
+            <value>2</value>
+        </property>
+        <property>
+            <name>dfs.namenode.name.dir</name>
+            <value>file:/opt/hadoop/biltegia/hdfs/namenode</value>
+        </property>
+        <property>
+            <name>dfs.datanode.data.dir</name>
+            <value>file:/opt/hadoop/biltegia/hdfs/datanode</value>
+        </property>
+        <property>
+            <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+            <value>false</value> <!-- Deshabilitar la verificaci  n de registro de IP/Hostname -->
+        </property>
+        <property>
+            <name>dfs.namenode.rpc-bind-host</name>
+            <value>0.0.0.0</value>
+        </property>
+
+    yarn-site.xml
+        <configuration>
+            <property>
+                <name>yarn.nodemanager.aux-services</name>
+                <value>mapreduce_shuffle</value>
+            </property>
+            <property>
+                <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+                <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+            </property>
+        </configuration>
+
+    mapred-site.xml
+        <configuration>
+            <property>
+                <name>mapreduce.framework.name</name>
+                <value>yarn</value>
+            </property>
+        </configuration>
+
+slave node 10.0.2.21
+    bloques utilizados
+        DataNode
+
+    definir donde esta el master (core-site.xml)
+        <name>fs.default.name</name>
+        <value>hdfs://10.0.2.20:9000</value>
+
+los dos se conectan usando ssh asi que genera el key en los dos y pasa key el uno al otro
+añade un file "config" como por ejemplo en master node
+    Host slave1
+        HostName 10.0.2.21
+        User hadoop
+        IdentityFile /opt/hadoop/.ssh/id_rsa
+        Port 2222
+
+
+
+comprobar que funciona:
+
+    generate-file.sh para generar un fichero con mas de 128MB (no divide en cahitos los files si no alcanzan 128MB, pero ese valor se puede cambiar)
+    # START
+        #!/bin/bash
+
+        # Nombre del archivo
+        FILENAME="test.txt"
+
+        # Tama  o del archivo en megabytes (MB)
+        FILESIZE_MB=1024  # Cambia esto al tama  o deseado (por ejemplo, 500000 para 500 GB)
+
+        # Comprobamos si el archivo ya existe
+        if [ -f "$FILENAME" ]; then
+            echo "El archivo $FILENAME ya existe. Elimin  ndolo..."
+            rm -f "$FILENAME"
+        fi
+
+        # Generamos el archivo de texto con datos aleatorios
+        echo "Generando el archivo $FILENAME de $FILESIZE_MB MB..."
+        dd if=/dev/urandom of="$FILENAME" bs=1M count="$FILESIZE_MB"
+
+        # Comprobamos el tama  o del archivo generado
+        echo "Archivo $FILENAME generado con   xito."
+        ls -lh "$FILENAME"
+    # END
+
+    hadoop@abef0eb306c7:~$ bin/hdfs dfs -put /opt/hadoop/test2.txt /
+
+    hadoop@abef0eb306c7:~$ bin/hdfs dfs -ls / (si haces esto en los demas nodos deberias de poder su contenido)
+
+    hadoop@abef0eb306c7:~$ bin/hdfs fsck /test.txt -locations (analizad los resultados)
+
+    
+
+
+    

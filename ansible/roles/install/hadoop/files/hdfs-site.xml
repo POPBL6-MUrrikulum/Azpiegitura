@@ -1,0 +1,23 @@
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/opt/hadoop/biltegia/hdfs/namenode</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/opt/hadoop/biltegia/hdfs/datanode</value>
+    </property>
+    <property>
+        <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+        <value>false</value>
+    </property>
+    <!-- Configuración para que el NameNode escuche en todas las interfaces -->
+    <property>
+        <name>dfs.namenode.bindHost</name>
+        <value>0.0.0.0</value>
+    </property>
+</configuration>

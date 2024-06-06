@@ -1,0 +1,23 @@
+- name: COPY 
+  copy:
+    src: "{{ role_path }}/files"
+    dest: "/root/zookeeper"
+
+- name: BUILD
+  community.docker.docker_image:
+    name: zookeeper-pbl:1.0.0
+    source: build
+    build:
+      path: "/root/zookeeper/files"
+
+- name: RUN zookeeper
+  docker_container:
+    name: zookeeper
+    image: zookeeper-pbl:1.0.0
+    state: started
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+    restart_policy: always
+    detach: yes

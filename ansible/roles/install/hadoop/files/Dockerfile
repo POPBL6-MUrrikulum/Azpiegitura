@@ -1,6 +1,5 @@
 # Usamos la imagen base de Debian Bookworm
-ARG version=20240211
-FROM debian:bookworm-$version-slim
+FROM debian:bookworm-20240211-slim
 
 # Establecemos el modo non-interactive para evitar preguntas durante la instalación
 ENV DEBIAN_FRONTEND noninteractive  
@@ -13,6 +12,8 @@ RUN apt-get update && apt upgrade -y && apt-get install -y \
     openssh-server  \
     sudo \
     wget \
+    nano \
+    iputils-ping \
     gosu \
     --no-install-recommends \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
@@ -31,11 +32,11 @@ RUN ssh-keygen -q -t rsa -N "" -f /opt/hadoop/.ssh/id_rsa \
  && cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys 
 
 # opcion 1: descargar hadoop de internet
-RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz -O hadoop.tar.gz \
- && tar -xzvf hadoop.tar.gz -C /opt/hadoop --strip-components=1 && rm hadoop.tar.gz 
+#RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz -O hadoop.tar.gz \
+# &&  -C /opt/hadoop --strip-components=1 && rm hadoop.tar.gz 
 # opcion 2: copiar hadoop ya descargado 
-# COPY  hadoop-3.4.0.tar.gz .
-# RUN   tar -xzvf hadoop-3.4.0.tar.gz -C /opt/hadoop --strip-components=1 && rm hadoop-3.4.0.tar.gz
+ COPY  hadoop.tar.gz .
+ RUN   tar -xzvf hadoop.tar.gz -C /opt/hadoop --strip-components=1 && rm hadoop.tar.gz
 
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 \
     HADOOP_HOME=/opt/hadoop \
@@ -69,15 +70,23 @@ RUN echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64'               >> $
 <configuration>\n\
     <property>\n\
         <name>dfs.replication</name>\n\
-        <value>1</value>\n\
+        <value>3</value>\n\
     </property>\n\
     <property>\n\
         <name>dfs.namenode.name.dir</name>\n\
-        <value>file:/opt/hadoop/hadoop_tmp/hdfs/namenode</value>\n\
+        <value>file:/opt/hadoop/biltegia/hdfs/namenode</value>\n\
     </property>\n\
     <property>\n\
         <name>dfs.datanode.data.dir</name>\n\
-        <value>file:/opt/hadoop/hadoop_tmp/hdfs/datanode</value>\n\
+        <value>file:/opt/hadoop/biltegia/hdfs/datanode</value>\n\
+    </property>\n\
+    <property>\n\
+        <name>dfs.namenode.datanode.registration.ip-hostname-check</name>\n\
+        <value>false</value> <!-- Deshabilitar la verificación de registro de IP/Hostname -->\n\
+    </property>\n\
+    <property> \n\
+        <name>dfs.namenode.rpc-bind-host</name>\n\
+        <value>0.0.0.0</value>\n\
     </property>\n\
 </configuration>' > /opt/hadoop/etc/hadoop/hdfs-site.xml \
 && echo '\

@@ -1,0 +1,43 @@
+- name: Run SonarQube container
+  community.docker.docker_container:
+    name: sonarqube
+    image: sonarqube:latest
+    state: started
+    ports:
+      - "9000:9000"
+    env:
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+
+- name: Run RabbitMQ container
+  community.docker.docker_container:
+    name: rabbitMQ
+    image: rabbitmq:3.13-management
+    state: started
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - "./rabbitmq_data:/var/lib/rabbitmq"
+    env:
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "admin"
+
+- name: Ensure Grafana data directory exists
+  ansible.builtin.file:
+    path: ./grafana
+    state: directory
+    mode: '0775'
+    owner: 472
+    group: 472
+    
+- name: Run Grafana container
+  community.docker.docker_container:
+    name: grafana
+    image: grafana/grafana-oss
+    state: started
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./grafana:/var/lib/grafana"
+    env:
+      GF_INSTALL_PLUGINS: "percona-percona-app"

@@ -11,55 +11,63 @@ terraform {
   }
 }
 
+# First Proxmox provider for AritzNode
 provider "proxmox" {
-  pm_api_url        = "${var.px_url}/api2/json"
-  pm_user           = var.px_user
-  pm_password       = var.px_password
+  pm_api_url   = "${var.px_url}/api2/json"
+  pm_user      = var.px_user
+  pm_password  = var.px_password
 }
 
 resource "proxmox_lxc" "LXC" {
-  count             = length(var.lxc_hostnames)
-  target_node       = var.lxc_target_node
-  hostname          = var.lxc_hostnames[count.index]
-  password          = var.lxc_password
-  ostemplate        = "local:vztmpl/${var.lxc_template}"
-  memory            = var.lxc_memory
-  cores             = var.lxc_cores
-  unprivileged      = false
-  start             = true
-  swap              = 1024
-  
+  count = length(var.lxc_target_nodes) * length(var.lxc_hostnames)
+
+  vmid         = count.index + 100
+  target_node  = element(var.lxc_target_nodes, floor(count.index / length(var.lxc_hostnames)))
+  hostname     = element(var.lxc_hostnames, count.index % length(var.lxc_hostnames))
+  password     = var.lxc_password
+  ostemplate   = "local:vztmpl/${var.lxc_template}"
+  memory       = var.lxc_memory
+  cores        = var.lxc_cores
+  unprivileged = false
+  start        = true
+  swap         = 2048
 
   rootfs {
-    storage         = "local-lvm"
-    size            = var.lxc_rootfs_size
+    storage = "local-lvm"
+    size    = var.lxc_rootfs_size
   }
-  
+
   network {
-    name            = var.lxc_network_name
-    bridge          = var.lxc_network_bridge
-    ip              = "${var.lxc_network_ips[count.index]}/${var.lxc_network_mask}"
-    gw              = var.lxc_network_gw
+    name    = var.lxc_network_name
+    bridge  = var.lxc_network_bridge
+    ip      = "${element(var.lxc_network_ips[element(var.lxc_target_nodes, floor(count.index / length(var.lxc_hostnames)))], count.index % length(var.lxc_hostnames))}/${var.lxc_network_mask}"
+    gw      = var.lxc_network_gw
   }
-  # Habilitar anidamiento en el contenedor LXC
+
   features {
     nesting = true
   }
 
-   # Añade la clave pública SSH al metadata del contenedor LXC (el simbolo del dolar es para de)
-  ssh_public_keys   = "${file("${var.vm_ssh_key_path}")}"
+  ssh_public_keys = "${file("${var.vm_ssh_key_path}")}"
 }
-#resource "null_resource" "run_ansible_playbook" {
+
+
+resource "null_resource" "install_docker" {
+  # This resource depends on the Proxmox LXC containers being created
+    depends_on = [proxmox_lxc.LXC]
+
+  provisioner "local-exec" {
+    command = "ansible-playbook playbooks/docker.yaml"
+    working_dir = "/home/user/data-engineering/ansible"
+  }
+}
+
+#resource "null_resource" "install_hadoop" {
 #  # This resource depends on the Proxmox LXC containers being created
-#    depends_on = [proxmox_lxc.LXC]
-#
-#  # Use a trigger to force the resource to be recreated whenever the Ansible playbook or its dependencies change
-#  triggers = {
-#    always_run = "${timestamp()}"
-#  }
+#    depends_on = [null_resource.install_docker]
 #
 #  provisioner "local-exec" {
-#    command = "ansible-playbook playbooks/instalar-docker.yaml"
+#    command = "ansible-playbook playbooks/hadoop.yaml"
 #    working_dir = "/home/user/data-engineering/ansible"
 #  }
 #}

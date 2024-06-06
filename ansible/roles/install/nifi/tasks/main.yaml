@@ -19,16 +19,13 @@
       #dockerfile: /root/Dockerfile
       path: "/root/nifi/files"
 
-- name: REMOVE FILE
-  ansible.builtin.file:
-    path: "/root/nifi/files"
-    state: absent
-
 - name: RUN
   docker_container:
     name: nifi
     image: nifi-pbl:1.0.0
     ports:            
-      - "8080:8080"   
+      - "8080:8080"
+      - "8082:8082"
+      - "10000:10000"   
     detach: true
     restart_policy: always
