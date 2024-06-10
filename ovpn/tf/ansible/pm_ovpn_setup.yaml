@@ -1,8 +1,0 @@
----
-
-- name: OpenVPN
-  hosts: all
-  remote_user: root
-  become: no
-  roles:
-  - pm_ovpn_setup

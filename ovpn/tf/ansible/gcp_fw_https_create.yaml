@@ -1,7 +1,0 @@
----
-
-- name: Google Cloud Platform firewall rule apply
-  hosts: localhost
-  gather_facts: false
-  roles:
-  - gcp_fw_https_create
