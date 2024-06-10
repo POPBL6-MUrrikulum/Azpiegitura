@@ -6,7 +6,7 @@
   - gcp_ovpn_up
 
 - name: Proxmox-eko CT-a hasi
-  hosts: pve1
+  hosts: AritzNode
   remote_user: root
   become: no
   gather_facts: no

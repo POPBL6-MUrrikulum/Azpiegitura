@@ -1,5 +1,9 @@
-kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic TutorialTopic
+docker exec -it kafka /bin/bash -c "kafka/bin/kafka-topics.sh --create --bootstrap-server 10.0.2.10:9092 --replication-factor 3 --partitions 3 --topic TutorialTopic"
 
-"Hello, World" | kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic TutorialTopic > /dev/null
+docker exec -it kafka /bin/bash -c "kafka/bin/kafka-topics.sh --list --bootstrap-server 10.0.2.10:9092"
 
-kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic TutorialTopic --from-beginning  
+docker exec -it kafka /bin/bash -c "echo 'Tu mensaje aquí' | kafka/bin/kafka-console-producer.sh --broker-list 10.0.2.10:9092 --topic TutorialTopic"
+
+docker exec -it kafka /bin/bash -c "kafka/bin/kafka-console-consumer.sh --bootstrap-server 10.0.2.10:9092 --topic TutorialTopic --from-beginning"
+
+docker exec -it kafka /bin/bash -c "kafka/bin/kafka-topics.sh --list --bootstrap-server 10.0.2.10:9092"

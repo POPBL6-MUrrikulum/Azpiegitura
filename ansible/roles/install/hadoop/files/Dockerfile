@@ -28,15 +28,25 @@ RUN apt-get update && apt upgrade -y && apt-get install -y \
 WORKDIR /opt/hadoop
 USER hadoop
 
-RUN ssh-keygen -q -t rsa -N "" -f /opt/hadoop/.ssh/id_rsa \
- && cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys 
+
+RUN mkdir -p /opt/hadoop/.ssh && touch /opt/hadoop/.ssh/authorized_keys 
+
 
 # opcion 1: descargar hadoop de internet
 #RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz -O hadoop.tar.gz \
 # &&  -C /opt/hadoop --strip-components=1 && rm hadoop.tar.gz 
-# opcion 2: copiar hadoop ya descargado 
+# opcion 2: copiar hadoop ya descargado
  COPY  hadoop.tar.gz .
  RUN   tar -xzvf hadoop.tar.gz -C /opt/hadoop --strip-components=1 && rm hadoop.tar.gz
+
+ COPY gakoak/gakoa /opt/hadoop/.ssh/gakoa
+ COPY gakoak/20_gakoa.pub /opt/hadoop/.ssh/20_gakoa.pub
+ COPY gakoak/21_gakoa.pub /opt/hadoop/.ssh/21_gakoa.pub
+ COPY gakoak/22_gakoa.pub /opt/hadoop/.ssh/22_gakoa.pub
+
+ RUN cat /opt/hadoop/.ssh/20_gakoa.pub >> /opt/hadoop/.ssh/authorized_keys \
+  && cat /opt/hadoop/.ssh/21_gakoa.pub >> /opt/hadoop/.ssh/authorized_keys \
+  && cat /opt/hadoop/.ssh/22_gakoa.pub >> /opt/hadoop/.ssh/authorized_keys
 
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 \
     HADOOP_HOME=/opt/hadoop \

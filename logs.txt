@@ -1,0 +1,273 @@
+2024-06-10 18:43:25 DEPRECATED OPTION: --cipher set to 'AES-256-CBC' but missing in --data-ciphers (AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305). OpenVPN ignores --cipher for cipher negotiations. 
+2024-06-10 18:43:25 Note: Kernel support for ovpn-dco missing, disabling data channel offload.
+2024-06-10 18:43:25 OpenVPN 2.6.3 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2024-06-10 18:43:25 library versions: OpenSSL 3.0.11 19 Sep 2023, LZO 2.10
+2024-06-10 18:43:25 DCO version: N/A
+2024-06-10 18:43:25 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 18:43:25 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 18:43:25 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 18:43:25 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 18:43:25 TCP connection established with [AF_INET]34.41.226.83:443
+2024-06-10 18:43:25 TCPv4_CLIENT link local: (not bound)
+2024-06-10 18:43:25 TCPv4_CLIENT link remote: [AF_INET]34.41.226.83:443
+2024-06-10 18:43:25 NOTE: UID/GID downgrade will be delayed because of --client, --pull, or --up-delay
+2024-06-10 18:43:25 TLS: Initial packet from [AF_INET]34.41.226.83:443, sid=9b038407 20f638dc
+2024-06-10 18:43:26 VERIFY OK: depth=1, CN=Easy-RSA CA
+2024-06-10 18:43:26 VERIFY KU OK
+2024-06-10 18:43:26 Validating certificate extended key usage
+2024-06-10 18:43:26 ++ Certificate has EKU (str) TLS Web Server Authentication, expects TLS Web Server Authentication
+2024-06-10 18:43:26 VERIFY EKU OK
+2024-06-10 18:43:26 VERIFY OK: depth=0, CN=server
+2024-06-10 18:43:26 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bit RSA, signature: RSA-SHA256
+2024-06-10 18:43:26 [server] Peer Connection Initiated with [AF_INET]34.41.226.83:443
+2024-06-10 18:43:26 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2024-06-10 18:43:26 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2024-06-10 18:43:26 PUSH: Received control message: 'PUSH_REPLY,route 10.128.0.0 255.255.255.255,route 10.8.0.1,topology net30,ping 10,ping-restart 120,ifconfig 10.8.0.6 10.8.0.5,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1500'
+2024-06-10 18:43:26 OPTIONS IMPORT: --ifconfig/up options modified
+2024-06-10 18:43:26 OPTIONS IMPORT: route options modified
+2024-06-10 18:43:26 OPTIONS IMPORT: tun-mtu set to 1500
+2024-06-10 18:43:26 net_route_v4_best_gw query: dst 0.0.0.0
+2024-06-10 18:43:26 net_route_v4_best_gw result: via 10.0.2.2 dev enp0s3
+2024-06-10 18:43:26 ROUTE_GATEWAY 10.0.2.2/255.255.255.0 IFACE=enp0s3 HWADDR=08:00:27:81:17:30
+2024-06-10 18:43:26 TUN/TAP device tun0 opened
+2024-06-10 18:43:26 net_iface_mtu_set: mtu 1500 for tun0
+2024-06-10 18:43:26 net_iface_up: set tun0 up
+2024-06-10 18:43:26 net_addr_ptp_v4_add: 10.8.0.6 peer 10.8.0.5 dev tun0
+2024-06-10 18:43:26 /etc/openvpn/update-resolv-conf tun0 1500 0 10.8.0.6 10.8.0.5 init
+2024-06-10 18:43:26 net_route_v4_add: 10.128.0.23/32 via 10.8.0.5 dev [NULL] table 0 metric -1
+2024-06-10 18:43:26 net_route_v4_add: 10.128.0.0/32 via 10.8.0.5 dev [NULL] table 0 metric -1
+2024-06-10 18:43:26 net_route_v4_add: 10.8.0.1/32 via 10.8.0.5 dev [NULL] table 0 metric -1
+2024-06-10 18:43:26 UID set to user
+2024-06-10 18:43:26 GID set to user
+2024-06-10 18:43:26 Capabilities retained: CAP_NET_ADMIN
+2024-06-10 18:43:26 Initialization Sequence Completed
+2024-06-10 18:43:26 Data Channel: cipher 'AES-256-GCM', peer-id: 0
+2024-06-10 18:43:26 Timers: ping 10, ping-restart 120
+2024-06-10 18:43:26 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt
+2024-06-10 18:51:57 Connection reset, restarting [0]
+2024-06-10 18:51:57 SIGUSR1[soft,connection-reset] received, process restarting
+2024-06-10 18:51:57 Restart pause, 1 second(s)
+2024-06-10 18:51:58 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 18:51:58 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 18:51:58 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 18:51:58 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 18:53:58 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 18:53:58 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 18:53:58 Restart pause, 1 second(s)
+2024-06-10 18:53:59 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 18:53:59 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 18:53:59 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 18:53:59 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 18:55:59 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 18:55:59 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 18:55:59 Restart pause, 1 second(s)
+2024-06-10 18:56:00 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 18:56:00 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 18:56:00 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 18:56:00 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 18:58:00 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 18:58:00 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 18:58:00 Restart pause, 1 second(s)
+2024-06-10 18:58:01 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 18:58:01 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 18:58:01 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 18:58:01 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:00:01 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:00:01 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:00:01 Restart pause, 1 second(s)
+2024-06-10 19:00:02 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:00:02 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:00:02 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:00:02 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:02:02 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:02:02 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:02:02 Restart pause, 1 second(s)
+2024-06-10 19:02:03 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:02:03 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:02:03 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:02:03 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:04:04 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:04:04 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:04:04 Restart pause, 2 second(s)
+2024-06-10 19:04:06 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:04:06 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:04:06 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:04:06 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:06:06 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:06:06 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:06:06 Restart pause, 4 second(s)
+2024-06-10 19:06:10 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:06:10 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:06:10 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:06:10 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:08:10 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:08:10 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:08:10 Restart pause, 8 second(s)
+2024-06-10 19:08:18 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:08:18 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:08:18 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:08:18 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:10:18 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:10:18 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:10:18 Restart pause, 16 second(s)
+2024-06-10 19:10:34 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:10:34 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:10:34 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:10:34 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:12:34 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:12:34 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:12:34 Restart pause, 32 second(s)
+2024-06-10 19:13:06 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:13:06 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:13:06 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:13:06 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:15:06 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:15:06 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:15:06 Restart pause, 64 second(s)
+2024-06-10 19:16:10 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:16:10 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:16:10 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:16:10 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:18:10 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:18:10 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:18:10 Restart pause, 128 second(s)
+2024-06-10 19:20:18 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:20:18 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:20:18 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:20:18 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:22:19 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:22:19 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:22:19 Restart pause, 256 second(s)
+2024-06-10 19:26:35 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:26:35 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:26:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:26:35 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:28:35 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:28:35 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:28:35 Restart pause, 300 second(s)
+2024-06-10 19:33:35 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:33:35 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:33:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:33:35 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:35:35 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:35:35 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:35:35 Restart pause, 300 second(s)
+2024-06-10 19:40:35 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:40:35 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:40:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:40:35 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:42:35 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:42:35 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:42:35 Restart pause, 300 second(s)
+2024-06-10 19:47:35 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:47:35 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:47:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:47:35 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:49:35 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:49:35 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:49:35 Restart pause, 300 second(s)
+2024-06-10 19:54:35 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 19:54:35 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 19:54:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 19:54:35 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 19:56:35 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 19:56:35 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 19:56:35 Restart pause, 300 second(s)
+2024-06-10 20:01:35 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 20:01:35 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 20:01:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 20:01:35 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 20:03:35 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 20:03:35 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 20:03:35 Restart pause, 300 second(s)
+2024-06-10 20:08:35 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 20:08:35 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 20:08:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 20:08:35 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 20:10:35 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 20:10:35 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 20:10:35 Restart pause, 300 second(s)
+2024-06-10 20:15:35 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 20:15:35 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 20:15:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 20:15:35 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 20:17:36 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 20:17:36 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 20:17:36 Restart pause, 300 second(s)
+2024-06-10 20:22:36 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 20:22:36 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 20:22:36 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 20:22:36 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 20:24:36 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 20:24:36 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 20:24:36 Restart pause, 300 second(s)
+2024-06-10 20:29:36 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 20:29:36 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 20:29:36 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 20:29:36 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 20:31:36 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 20:31:36 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 20:31:36 Restart pause, 300 second(s)
+2024-06-10 20:36:36 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 20:36:36 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 20:36:36 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 20:36:36 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 20:38:36 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 20:38:36 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 20:38:36 Restart pause, 300 second(s)
+2024-06-10 20:43:36 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 20:43:36 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 20:43:36 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 20:43:36 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 20:45:36 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 20:45:36 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 20:45:36 Restart pause, 300 second(s)
+2024-06-10 20:50:36 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 20:50:36 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 20:50:36 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 20:50:36 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 20:52:36 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 20:52:36 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 20:52:36 Restart pause, 300 second(s)
+2024-06-10 20:57:36 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 20:57:36 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 20:57:36 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 20:57:36 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 20:59:36 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 20:59:36 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 20:59:36 Restart pause, 300 second(s)
+2024-06-10 21:04:36 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 21:04:36 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 21:04:36 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 21:04:36 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 21:06:37 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 21:06:37 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 21:06:37 Restart pause, 300 second(s)
+2024-06-10 21:11:37 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 21:11:37 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 21:11:37 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 21:11:37 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 21:13:37 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 21:13:37 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 21:13:37 Restart pause, 300 second(s)
+2024-06-10 21:18:37 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 21:18:37 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 21:18:37 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 21:18:37 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 21:20:37 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 21:20:37 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 21:20:37 Restart pause, 300 second(s)
+2024-06-10 21:25:37 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 21:25:37 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 21:25:37 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 21:25:37 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 21:27:37 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 21:27:37 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 21:27:37 Restart pause, 300 second(s)
+2024-06-10 21:32:37 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+2024-06-10 21:32:37 TCP/UDP: Preserving recently used remote address: [AF_INET]34.41.226.83:443
+2024-06-10 21:32:37 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2024-06-10 21:32:37 Attempting to establish TCP connection with [AF_INET]34.41.226.83:443
+2024-06-10 21:34:37 TCP: connect to [AF_INET]34.41.226.83:443 failed: Connection timed out
+2024-06-10 21:34:37 SIGUSR1[connection failed(soft),connection-failed] received, process restarting
+2024-06-10 21:34:37 Restart pause, 300 second(s)

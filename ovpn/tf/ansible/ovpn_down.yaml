@@ -1,7 +1,7 @@
 ---
 
 - name: Proxmox-eko CT-a itzali
-  hosts: pve1
+  hosts: AritzNode
   remote_user: root
   become: no
   gather_facts: no

@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     unzip \
     nano \
+    ssh \
     gnupg \
     --no-install-recommends \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \

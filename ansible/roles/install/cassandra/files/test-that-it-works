@@ -14,13 +14,16 @@ Create a Keyspace:
 
     sql
 
-    CREATE KEYSPACE my_keyspace WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+    CREATE KEYSPACE popbl6-keyspace WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+    CREATE KEYSPACE popbl6_keyspace WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 3};
+
 
 Use the Keyspace:
 
     After creating the keyspace, switch to it using the USE command. For example:
 
     USE my_keyspace;
+   USE popbl6_keyspace;
 
 Create a Table:
 
@@ -42,13 +45,17 @@ Insert Data:
 
     INSERT INTO my_table (id, name, age) VALUES (uuid(), 'John', 30);
 
+    INSERT INTO lanak (id, enpresaid, hezkuntzamaila, hizkuntza, lanizena, lokalidadea, modua, sektorea, soldata) 
+    VALUES (uuid(), 2fb16b21-85d4-4aeb-896e-b83035c29aba, 'Grado', 'Gaztelera', 'Irakaslea', 'Granada', 2, 'Heziketa', 2400);
+
+
 Query Data:
 
     Query the data you've inserted to verify that it's stored correctly. For example:
 
     sql
 
-    SELECT * FROM my_table;
+    SELECT * FROM lanak;
 
 Verify Results:
 

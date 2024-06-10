@@ -2,9 +2,17 @@ all:
   children:
     proxmox:
       hosts:
-        pve1:
+        AritzNode:
           ansible_host: "{{ pm_node[0]['ip'] }}"
           ansible_ssh_private_key_file: "{{ pm_node[0]['ssh_private_key'] }}"
+        
+        anderNode:
+          ansible_host: "{{ pm_node[1]['ip'] }}"
+          ansible_ssh_private_key_file: "{{ pm_node[1]['ssh_private_key'] }}"
+        
+        GorkaNode:
+          ansible_host: "{{ pm_node[2]['ip'] }}"
+          ansible_ssh_private_key_file: "{{ pm_node[2]['ssh_private_key'] }}"
     ct:
       hosts:
         ovpn:

@@ -25,14 +25,14 @@ pm_api_host: 10.0.2.5
 
 # Proxmox node-en aldagaiak
 pm_node:
-  - hostname: pve1
-    ip: 10.0.2.4
-    ssh_private_key: kredentzialak/ssh/pmpve1
-  - hostname: pve2
+  - hostname: AritzNode
     ip: 10.0.2.5
+    ssh_private_key: kredentzialak/ssh/pmpve1
+  - hostname: anderNode
+    ip: 10.0.2.4
     ssh_private_key: kredentzialak/ssh/pmpve2
-  - hostname: pve3
-    ip: 10.0.2.6
+  - hostname: GorkaNode
+    ip: 10.0.2.3
     ssh_private_key: kredentzialak/ssh/pmpve3
 pm_sarea: 10.0.2.0/24
 
@@ -54,4 +54,4 @@ pm_ct_kernel_config:
 
 ovpn_ct_ssh_private_key: kredentzialak/ssh/pmct
 ovpn_sarea: 10.8.0.0/24
-ovpn_bezeroa: 10.0.2.8
+ovpn_bezeroa: 10.0.2.100

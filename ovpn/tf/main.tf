@@ -95,6 +95,15 @@ resource "google_compute_instance" "ovpnci" {
     command = "ansible-playbook ansible/gcp_fw_https_create.yaml"
   }
 
+
+  #provisioner "local-exec" {
+  #  command = "echo '${google_compute_instance.ovpnci.network_interface[0].access_config[0].nat_ip}' > output/ovpnci_external_ip.txt"
+  #}
+
+  #provisioner "local-exec" {
+  #  command = "echo '${google_compute_instance.ovpnci.network_interface[0].network_ip}' > output/ovpnci_internal_ip.txt"
+  #}
+
   provisioner "local-exec" {
     command = "ANSIBLE_CONFIG=ansible_gcp.cfg ansible-playbook -e 'ansible_ssh_private_key_file=kredentzialak/ssh/gcp' -e 'internalip=${self.network_interface.0.network_ip}' -i ${self.network_interface.0.access_config.0.nat_ip}, ansible/gcp_ovpn_setup.yaml"
   }
